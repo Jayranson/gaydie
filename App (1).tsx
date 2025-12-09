@@ -53,7 +53,8 @@ const initializeFirebase = () => {
     if (isFirebaseConfigured) return; // Already initialized
     
     try {
-        const firebaseConfig = JSON.parse(typeof window.__firebase_config !== 'undefined' ? window.__firebase_config : '{}');
+        const rawConfig = typeof window.__firebase_config !== 'undefined' ? window.__firebase_config : '{}';
+        const firebaseConfig = typeof rawConfig === 'string' ? JSON.parse(rawConfig) : rawConfig;
         
         // Check if Firebase config has required fields
         if (firebaseConfig && firebaseConfig.apiKey && firebaseConfig.projectId) {
@@ -1785,6 +1786,8 @@ const TradieCard = ({ profile, mode, isTrusted, onMessage, onRequestJob }) => {
 );
 
 // --- Shop, Job Board, Chat, Profile (Mostly GT1 Structure) ---
+
+};
 
 const Shop = ({ user, showToast, onCartChange }) => {
     const [cart, setCart] = useState([]);
