@@ -1787,6 +1787,8 @@ const TradieCard = ({ profile, mode, isTrusted, onMessage, onRequestJob }) => {
 
 // --- Shop, Job Board, Chat, Profile (Mostly GT1 Structure) ---
 
+};
+
 const Shop = ({ user, showToast, onCartChange }) => {
     const [cart, setCart] = useState([]);
     const [showCart, setShowCart] = useState(false);
